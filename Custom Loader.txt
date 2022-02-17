@@ -1,0 +1,53 @@
+class LoaderDialog extends StatelessWidget {
+  LoaderDialog({this.context});
+  BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0))
+      ),
+      backgroundColor: Colors.black87,
+      content: Container(
+          padding: EdgeInsets.all(16),
+          // color: Colors.black87,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _getLoadingIndicator(),
+                _getHeading(),
+              ]
+          )
+      ),
+    );
+  }
+
+  Widget _getLoadingIndicator() {
+    return Padding(
+        child: Container(
+            child: CircularProgressIndicator(
+                color: Theme.of(context).appBarTheme.backgroundColor,
+                strokeWidth: 3
+            ),
+            width: 32,
+            height: 32
+        ),
+        padding: EdgeInsets.only(bottom: 16)
+    );
+  }
+  Widget _getHeading() {
+    return Padding(
+        child: Text(
+          'Please wait …',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 16
+          ),
+          textAlign: TextAlign.center,
+        ),
+        padding: EdgeInsets.only(bottom: 4)
+    );
+  }
+}
